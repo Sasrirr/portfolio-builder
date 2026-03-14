@@ -14,6 +14,7 @@ import { RotateCcw, Download, Cloud } from 'lucide-react';
 import ConfirmModal from './components/UI/ConfirmModal';
 
 const TEMP_USER_ID = "guest-user-123";
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 function App() {
   const { resumeData, updateData, setResumeData, resetForm } = useResume();
@@ -23,7 +24,7 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/resume/${TEMP_USER_ID}`);
+        const response = await axios.get(`${API_BASE}/api/resume/${TEMP_USER_ID}`);
         if (response.data) {
           const { _id, userId, createdAt, updatedAt, __v, ...pureResumeData } = response.data;
           setResumeData(pureResumeData);
@@ -38,7 +39,7 @@ function App() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/resume`, {
+      await axios.post(`${API_BASE}/api/resume`, {
         userId: TEMP_USER_ID,
         resumeData: resumeData
       });
