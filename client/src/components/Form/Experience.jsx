@@ -26,7 +26,7 @@ const Experience = () => {
 
     setLoadingId(id);
     try {
-      const response = await axios.post('http://localhost:5000/api/generate-description', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/generate-description`, {
         role,
         company
       });

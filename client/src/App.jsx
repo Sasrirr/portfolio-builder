@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/resume/${TEMP_USER_ID}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/resume/${TEMP_USER_ID}`);
         if (response.data) {
           const { _id, userId, createdAt, updatedAt, __v, ...pureResumeData } = response.data;
           setResumeData(pureResumeData);
@@ -38,7 +38,7 @@ function App() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await axios.post('http://localhost:5000/api/resume', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/resume`, {
         userId: TEMP_USER_ID,
         resumeData: resumeData
       });

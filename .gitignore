@@ -7,4 +7,5 @@ node_modules/
 client/node_modules/
 client/.env
 server/node_modules/
+do.txt
 server/.env

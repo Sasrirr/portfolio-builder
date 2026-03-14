@@ -18,7 +18,7 @@ const ResumeUpload = () => {
     setIsParsing(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/parse-resume', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/parse-resume`, {
         resumeText: pasteText
       });
 
