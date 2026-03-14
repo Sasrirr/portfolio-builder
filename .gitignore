@@ -1,0 +1,10 @@
+# Root gitignore
+node_modules/
+.env
+.DS_Store
+
+# Nested folders
+client/node_modules/
+client/.env
+server/node_modules/
+server/.env
