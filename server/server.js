@@ -152,6 +152,6 @@ const clientDistPath = path.join(__dirname, '../client/dist');
 
 app.use(express.static(clientDistPath));
 // Catch-all for SPA routes in Express 5 (path-to-regexp v8): name the wildcard param
-app.get('/*', (req, res) => {
+app.get('/:path(*)', (req, res) => {
   res.sendFile(path.join(clientDistPath, 'index.html'));
 });
