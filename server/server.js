@@ -152,6 +152,8 @@ const clientDistPath = path.join(__dirname, '../client/dist');
 
 app.use(express.static(clientDistPath));
 // Catch-all for SPA routes when serving the built client
-app.get('*', (req, res) => {
+// Catch-all for SPA routes when serving the built client (Express 5 needs an explicit segment)
+// Final fallback: serve index.html for any route (Express 5 safe pattern)
+app.use((req, res) => {
   res.sendFile(path.join(clientDistPath, 'index.html'));
 });
